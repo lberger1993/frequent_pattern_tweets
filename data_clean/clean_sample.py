@@ -8,6 +8,7 @@ from data_sources.stop_words import get_stop_words
 
 count_of_word_in_row = []
 
+
 def remove_stop_words(df):
     df['tweet'] = df['tweet'].apply(lambda x: [item for item in x if item not in get_stop_words()])
     return df
