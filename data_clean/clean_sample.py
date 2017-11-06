@@ -28,18 +28,20 @@ def count_words(df):
     totals = collections.Counter(i for i in list(itertools.chain.from_iterable(df['tweet'])))
     with open('most_common_words.json', 'w') as outfile:
         json.dump(dict(totals.most_common()), outfile)
-    return  totals
+    return totals
+
 
 def select_top_words():
     with open('most_common_words.json', 'r') as wordsfile:
         data = json.load(wordsfile)
-        data = {word: count for word,count in data.items() if data[word]>5}
+        data = {word: count for word, count in data.items() if data[word] > 5}
         data = data[:50]
         print(data)
         return data
 
-def print_arff(tweets,attributes):
-    with open("tweets.arff","w") as file:
+
+def print_arff(tweets, attributes):
+    with open("/data_sources/tweets.arff", "w") as file:
         file.write("%\n")
         file.write("% Tweet Attributes\n")
         file.write("%\n")
@@ -49,7 +51,7 @@ def print_arff(tweets,attributes):
             file.write("@attribute '%s' {'n', 'y'}\n" % item[0])
         file.write("\n@data\n")
         for index, row in tweets.iterrows():
-            line = "%d" %row['other']
+            line = "%d" % row['other']
             for item in attributes:
                 if item[0] in row['tweet']:
                     line += ", 'y'"
@@ -57,8 +59,7 @@ def print_arff(tweets,attributes):
                     line += ", 'n'"
             line += "\n"
             file.write(line)
-            #print(row['other'],row['tweet'])
-
+            # print(row['other'],row['tweet'])
 
 
 if __name__ == '__main__':
@@ -67,12 +68,3 @@ if __name__ == '__main__':
     all_tweets = remove_stop_words(all_tweets)
     topWords = count_words(all_tweets).most_common(50)
     print_arff(all_tweets, topWords)
-
-
-
-
-
-
-
-
-

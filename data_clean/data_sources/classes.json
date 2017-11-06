@@ -1,0 +1,15 @@
+[{
+  "className": "Elections",
+  "includedWords": [
+
+    "obama"
+  ]
+},
+  {
+    "className": "Kindle",
+    "includedWords": [
+      "kindle2",
+      "reading"
+    ]
+  }
+]
