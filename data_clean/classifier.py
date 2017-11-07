@@ -58,8 +58,5 @@ def classify_tweets(tweets):
 
 
 if __name__ == '__main__':
-    all_tweets = pd.DataFrame.from_csv('data_sources/tweets.csv', index_col=None)
-    all_tweets['tweet'] = all_tweets['tweet'].str.lower().str.replace('[^\w\s]', '').str.split()
-    all_tweets = remove_stop_words(all_tweets)
-
+    all_tweets = pd.DataFrame.from_csv('data_sources/clean_tweets.csv', index_col=None)
     classify_tweets(all_tweets)

@@ -71,3 +71,4 @@ if __name__ == '__main__':
     count_of_attributes = sys.argv[1]
     topWords = count_words(all_tweets).most_common(int(count_of_attributes))
     print_arff(all_tweets, topWords, count_of_attributes)
+    all_tweets.to_csv('data_sources/clean_tweets.csv')
