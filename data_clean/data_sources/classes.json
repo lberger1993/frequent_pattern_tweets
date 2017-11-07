@@ -5,10 +5,17 @@
   ]
 },
   {
-    "className": "Kindle",
+    "className": "Kindle_positive",
     "includedWords": [
       "kindle2",
       "love"
+    ]
+  },
+  {
+    "className": "KindleBook",
+    "includedWords": [
+      "kindle",
+      "book"
     ]
   },
    {
@@ -19,9 +26,48 @@
     ]
   },
   {
+    "className": "Lebron2",
+    "includedWords": [
+      "time",
+      "lebron",
+      "best"
+    ]
+  },
+  {
+    "className": "LebronPos",
+    "includedWords": [
+      "good",
+      "lebron"
+    ]
+  },
+  {
     "className": "Technology",
     "includedWords": [
-      "jquery"
+      "twitter",
+      "api"
+    ]
+  },
+  {
+    "className": "museum night",
+    "includedWords": [
+      "new",
+      "museum",
+      "night"
+    ]
+  },
+  {
+    "className": "standford",
+    "includedWords": [
+      "back",
+      "standford"
+    ]
+  },
+  {
+    "className": "jquery_book",
+    "includedWords": [
+      "jquery",
+      "book"
     ]
   }
 ]
+

@@ -41,7 +41,7 @@ def classify_tweets(tweets):
 
             if assignedToSomething == False:
                 mydict["Other"].append(row["other"])
-    with open("data_sources/classification_result.json", "w") as outfile:
+    with open("system_generated/classification_result.json", "w") as outfile:
 
         finalStr="[\n"
         first=True
