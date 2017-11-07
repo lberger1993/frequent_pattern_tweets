@@ -2,7 +2,6 @@ import json
 import pandas as pd
 
 
-
 def classify_tweets(tweets):
     mydict = dict()
     mydict["Other"] = []
@@ -21,20 +20,22 @@ def classify_tweets(tweets):
                         mydict[cl["className"]] = []
                     mydict[cl["className"]].append(row["other"])
                     assignedToSomething = True
+                    break
 
             if assignedToSomething == False:
                 mydict["Other"].append(row["other"])
     with open("system_generated/classification_result.json", "w") as outfile:
 
-        finalStr="[\n"
-        first=True
+        finalStr = "[\n"
+        first = True
         for item in mydict:
             if not first:
                 finalStr += ",\n"
-            finalStr+="{\n\"className\" : \"%s\",\n\"tweetIDs\" : [ %s ]\n}" % (item, ", ".join(str(x) for x in mydict[item]))
+            finalStr += "{\n\"className\" : \"%s\",\n\"tweetIDs\" : [ %s ]\n}" % (
+            item, ", ".join(str(x) for x in mydict[item]))
             first = False
 
-        finalStr+="\n]"
+        finalStr += "\n]"
         outfile.write(finalStr)
 
     return

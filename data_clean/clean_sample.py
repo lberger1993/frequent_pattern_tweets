@@ -7,6 +7,7 @@ import sys
 
 import pandas as pd
 from data_sources.stop_words import get_stop_words
+from stemming.porter2 import stem
 
 count_of_word_in_row = []
 
@@ -61,6 +62,9 @@ def print_arff(tweets, attributes, attr_count):
             line += "\n"
             file.write(line)
             # print(row['other'],row['tweet'])
+def stem_tweets(df):
+    df['tweet'] = df['tweet'].apply(lambda x: [stem(item) for item in x])
+    return df
 
 
 if __name__ == '__main__':
@@ -68,7 +72,12 @@ if __name__ == '__main__':
     all_tweets = pd.DataFrame.from_csv('data_sources/tweets.csv', index_col=None)
     all_tweets['tweet'] = all_tweets['tweet'].str.lower().str.replace('[^\w\s]', '').str.split()
     all_tweets = remove_stop_words(all_tweets)
+    # stemming, if we use it
+    all_tweets = stem_tweets(all_tweets)
     count_of_attributes = sys.argv[1]
     topWords = count_words(all_tweets).most_common(int(count_of_attributes))
     print_arff(all_tweets, topWords, count_of_attributes)
     all_tweets.to_csv('data_sources/clean_tweets.csv')
+
+
+
