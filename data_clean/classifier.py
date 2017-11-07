@@ -1,23 +1,6 @@
-import collections
-import itertools
 import json
 import pandas as pd
-from data_sources.stop_words import get_stop_words
 
-
-def remove_stop_words(df):
-    df['tweet'] = df['tweet'].apply(lambda x: [item for item in x if item not in get_stop_words()])
-    return df
-
-
-def remove_user_names(df):
-    for index, row in df.iterrows():
-        for elem in row['tweet']:
-            if 'http' in elem:
-                row['tweet'].remove(elem)
-            if '@' in elem:
-                row['tweet'].remove(elem)
-    return df
 
 
 def classify_tweets(tweets):
