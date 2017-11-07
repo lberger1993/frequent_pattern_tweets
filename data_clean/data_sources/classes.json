@@ -1,7 +1,6 @@
 [{
   "className": "Elections",
   "includedWords": [
-
     "obama"
   ]
 },
@@ -10,6 +9,22 @@
     "includedWords": [
       "kindle2",
       "reading"
+    ]
+  },
+   {
+    "className": "NBA",
+    "includedWords": [
+      "nike",
+      "lebron"
+    ]
+  },
+  {
+    "className": "Technology",
+    "includedWords": [
+      "jquery",
+      "google",
+      "twitter",
+      "api"
     ]
   }
 ]
