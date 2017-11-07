@@ -8,7 +8,7 @@
     "className": "Kindle",
     "includedWords": [
       "kindle2",
-      "reading"
+      "love"
     ]
   },
    {
@@ -21,10 +21,7 @@
   {
     "className": "Technology",
     "includedWords": [
-      "jquery",
-      "google",
-      "twitter",
-      "api"
+      "jquery"
     ]
   }
 ]
