@@ -1,11 +1,12 @@
 import json
+import sys
 import pandas as pd
 
 
-def classify_tweets(tweets):
+def classify_tweets(tweets, file_to_process):
     mydict = dict()
     mydict["Other"] = []
-    with open('data_sources/classes.json', "r") as file:
+    with open(file_to_process, "r") as file:
         data = json.load(file)
         for index, row in tweets.iterrows():
             assignedToSomething = False
@@ -43,4 +44,4 @@ def classify_tweets(tweets):
 
 if __name__ == '__main__':
     all_tweets = pd.DataFrame.from_csv('data_sources/clean_tweets.csv', index_col=None)
-    classify_tweets(all_tweets)
+    classify_tweets(all_tweets,  sys.argv[1])
