@@ -29,6 +29,7 @@ def classify_tweets(tweets, file_to_process):
 
         finalStr = "[\n"
         first = True
+        print(mydict)
         for item in mydict:
             if not first:
                 finalStr += ",\n"
@@ -42,6 +43,20 @@ def classify_tweets(tweets, file_to_process):
     return
 
 
+def write_classes():
+    all_tweets = pd.DataFrame.from_csv('data_sources/tweets.csv', index_col=None)
+    all_tweets['classifications'] = all_tweets['other']
+    data = json.load(open('system_generated/classification_result.json'))
+    for key in data:
+        class_label = key.get('className')
+        if key.get('tweetIDs'):
+            for val in key.get('tweetIDs'):
+                all_tweets['classifications'].replace(val, class_label, inplace=True)
+                all_tweets['classifications']
+    all_tweets.to_csv('data_sources/classified_tweets.csv')
+
+
 if __name__ == '__main__':
     all_tweets = pd.DataFrame.from_csv('data_sources/clean_tweets.csv', index_col=None)
     classify_tweets(all_tweets,  sys.argv[1])
+    write_classes()

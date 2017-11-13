@@ -1,6 +1,7 @@
 import json
 import re
 
+
 def parse_weka():
     new_list = []
     with open("system_generated/weka100_005.txt") as f:
@@ -15,6 +16,7 @@ def parse_weka():
                 .strip().replace(':', '')\
                 .replace(',', '    ')
             temp = sorted(words[0].split('    '))
+            print(temp)
             if len(temp) < 3 and temp not in new_list:
                 new_list.append(temp)
     return new_list
@@ -32,14 +34,9 @@ def parsed_to_classes(weka_dict):
             count = count + 1
         f.write(str(json.dumps(weka_classes)))
 
+
+
 if __name__ == '__main__':
     class_dict = parse_weka()
     parsed_to_classes(class_dict)
 
-
-
-
-
-
-# content = [x.strip() for x in content]
-# print(content[0])
