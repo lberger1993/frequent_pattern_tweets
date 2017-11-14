@@ -68,15 +68,12 @@ def stem_tweets(df):
 
 
 if __name__ == '__main__':
-
     all_tweets = pd.DataFrame.from_csv('data_sources/tweets.csv', index_col=None)
     all_tweets['tweet'] = all_tweets['tweet'].str.lower().str.replace('[^\w\s]', '').str.split()
     totals = collections.Counter(all_tweets['hashtag']).most_common()
-
     all_tweets = remove_stop_words(all_tweets)
     all_tweets = remove_user_names(all_tweets)
-    # stemming, if we use it
-    all_tweets = stem_tweets(all_tweets)
+
     count_of_attributes = sys.argv[1]
     topWords = count_words(all_tweets).most_common(int(count_of_attributes))
     print_arff(all_tweets, topWords, count_of_attributes)

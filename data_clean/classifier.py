@@ -11,6 +11,7 @@ def classify_tweets(tweets, file_to_process):
         for index, row in tweets.iterrows():
             assignedToSomething = False
             for cl in data:
+                print('here', cl)
                 TweetisCurrentClass = True
                 for attr in cl["includedWords"]:
                     if (attr not in row["tweet"]):
@@ -22,11 +23,9 @@ def classify_tweets(tweets, file_to_process):
                     mydict[cl["className"]].append(row["other"])
                     assignedToSomething = True
                     break
-
             if assignedToSomething == False:
                 mydict["Other"].append(row["other"])
     with open("system_generated/classification_result.json", "w") as outfile:
-
         finalStr = "[\n"
         first = True
         print(mydict)
@@ -53,7 +52,7 @@ def write_classes():
             for val in key.get('tweetIDs'):
                 all_tweets['classifications'].replace(val, class_label, inplace=True)
                 all_tweets['classifications']
-    all_tweets.to_csv('data_sources/classified_tweets.csv')
+    all_tweets.to_csv('data_sources/classified_tweets_processed100.csv')
 
 
 if __name__ == '__main__':
